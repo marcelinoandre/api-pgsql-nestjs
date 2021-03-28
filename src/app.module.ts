@@ -17,7 +17,7 @@ import { winstonConfig } from './configs/winston.config';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(typeOrmConfig),
     WinstonModule.forRoot(winstonConfig),
-    // MailerModule.forRoot(mailerConfig),
+    MailerModule.forRoot(mailerConfig),
     UsersModule,
     AuthModule,
   ],

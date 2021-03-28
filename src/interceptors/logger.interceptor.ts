@@ -31,7 +31,7 @@ export class LoggerInterceptor implements NestInterceptor {
           body: body,
           query: req.query,
           params: req.params,
-          heders: req.headers,
+          headers: req.headers,
         },
         from: req.ip,
         madeBy: userEmail,

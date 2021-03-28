@@ -1,5 +1,7 @@
+import { MailerService } from '@nestjs-modules/mailer';
 import {
   Injectable,
+  NotFoundException,
   UnauthorizedException,
   UnprocessableEntityException,
 } from '@nestjs/common';
@@ -17,13 +19,28 @@ export class AuthService {
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
     private jwtService: JwtService,
+    private mailerService: MailerService,
   ) {}
 
   async signUp(createUserDto: CreateUserDto): Promise<UserEntity> {
     if (createUserDto.password != createUserDto.passwordConfirmation) {
       throw new UnprocessableEntityException('As senhas não conferem');
     } else {
-      return await this.userRepository.createUser(createUserDto, UserRole.USER);
+      const user = await this.userRepository.createUser(
+        createUserDto,
+        UserRole.USER,
+      );
+      const mail = {
+        to: user.email,
+        from: 'noreply@application.com',
+        subject: 'Email de confirmação',
+        template: 'email-confirmation',
+        context: {
+          token: user.confirmationToken,
+        },
+      };
+      await this.mailerService.sendMail(mail);
+      return user;
     }
   }
 
@@ -40,5 +57,13 @@ export class AuthService {
     const token = await this.jwtService.sign(jwtPayload);
 
     return { token };
+  }
+
+  async confirmEmail(confirmationToken: string): Promise<void> {
+    const result = await this.userRepository.update(
+      { confirmationToken },
+      { confirmationToken: null },
+    );
+    if (result.affected === 0) throw new NotFoundException('Token inválido');
   }
 }
