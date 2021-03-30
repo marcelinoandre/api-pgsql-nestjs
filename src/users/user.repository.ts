@@ -91,4 +91,12 @@ export class UserRepository extends Repository<UserEntity> {
 
     return { users, total };
   }
+
+  async changePassword(id: string, password: string) {
+    const user = await this.findOne(id);
+    user.salt = await bcrypt.genSalt();
+    user.password = await this.hashPassword(password, user.salt);
+    user.recoverToken = null;
+    await user.save();
+  }
 }

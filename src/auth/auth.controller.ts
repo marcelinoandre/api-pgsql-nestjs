@@ -6,6 +6,7 @@ import {
   Patch,
   Post,
   Req,
+  UnauthorizedException,
   UseGuards,
   ValidationPipe,
 } from '@nestjs/common';
@@ -15,6 +16,8 @@ import { CreateUserDto } from '../users/dtos/create-user.dto';
 import { AuthService } from './auth.service';
 import { LoginDto } from './login.dto';
 import { GetUser } from './user.decorator';
+import { ChangePasswordDto } from './dto/change-password.dto';
+import { UserRole } from 'src/users/user-roles.enum';
 
 @Controller('auth')
 export class AuthController {
@@ -42,6 +45,46 @@ export class AuthController {
     await this.authService.confirmEmail(token);
     return {
       message: 'Email confirmado',
+    };
+  }
+
+  @Post('/send-recover-email')
+  async sendRecoverPasswordEmail(
+    @Body('email') email: string,
+  ): Promise<{ message: string }> {
+    await this.authService.sendRecoverPasswordEmail(email);
+    return {
+      message: 'Foi enviado um email com instruções para redefinir sua senha',
+    };
+  }
+
+  @Patch('/reset-password/:token')
+  async resetPassword(
+    @Param('token') token: string,
+    @Body(ValidationPipe) changePasswordDto: ChangePasswordDto,
+  ): Promise<{ message: string }> {
+    await this.authService.resetPassword(token, changePasswordDto);
+
+    return {
+      message: 'Senha alterada com sucesso',
+    };
+  }
+
+  @Patch(':id/change-password')
+  @UseGuards(AuthGuard())
+  async changePassword(
+    @Param('id') id: string,
+    @Body(ValidationPipe) changePasswordDto: ChangePasswordDto,
+    @GetUser() user: UserEntity,
+  ) {
+    if (user.role !== UserRole.ADMIN && user.id.toString() !== id)
+      throw new UnauthorizedException(
+        'Você não tem permissão para realizar esta operação',
+      );
+
+    await this.authService.changePassword(id, changePasswordDto);
+    return {
+      message: 'Senha alterada',
     };
   }
 
