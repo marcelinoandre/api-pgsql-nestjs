@@ -1,0 +1,4 @@
+[]Email de recuperação de senha
+[]Verificar se na redefinição de senha o campo confirmationToken permanece com informação
+[]testar endpoint com o usuario logado
+[]incluir collection do postman no repositorio

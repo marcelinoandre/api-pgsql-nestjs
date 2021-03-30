@@ -6,7 +6,18 @@
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
 ## Description
-Prática de um tutorial encontrado na internet, sobre uma aplicação postgresql, docker e o framework [Nest](https://nestjs.com).
+Execução  de um tutorial encontrado na internet sobre uma aplicação postgresql, docker e o framework [Nest](https://nestjs.com), com o intuito de práticar os conhecimentos.
+
+## Funcionalidades
+- Criação de conta para usuários externos
+- Criação de conta para usuários Administradores
+- Autenticação e Autorização
+- Envio de emails para confirmação de cadastro
+- Envio de emails para recuperação de senha
+- Busca de usuários com filtros e paginação
+- Busca de dados de um usuário específico
+- Bloquear o acesso de um usuário
+- Manter um log do que acontece no servidor
 
 
 ## Installation
