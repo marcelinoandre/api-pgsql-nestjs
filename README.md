@@ -8,6 +8,14 @@
 ## Description
 Execução  de um tutorial [pego na internet](https://medium.com/@iago.maiasilva/construindo-uma-api-com-nestjs-postgresql-e-docker-parte-1-criando-nosso-primeiro-endpoint-248d4b8ecc9c) que na minha opinião é o melhor conteúdo deste tipo em português que encontrei, sobre uma aplicação postgresql, docker e o framework [Nest](https://nestjs.com), com o intuito de práticar os conhecimentos.
 
+## Tecnologias
+- NodeJS v14.x
+- Typescript
+- Jest
+- PostgreSql
+- Mailtrap - Safe Emails Testing
+
+
 ## Funcionalidades
 - Criação de conta para usuários comuns
 - Criação de conta para usuários Administradores
