@@ -1,0 +1,242 @@
+{
+  "info": {
+    "_postman_id": "03df9923-2fd2-46e2-9893-8d8749e91c55",
+    "name": "api-nestjs-pgsql",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "create-user-admin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Andre Marcelino\",\n    \"email\": \"marcelinoandre@gmail.com\",\n    \"password\": \"123456\",\n    \"passwordConfirmation\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": ["{{baseUrl}}"],
+          "path": ["users"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create-user",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Andre User\",\n    \"email\": \"user@gmail.com\",\n    \"password\": \"123456\",\n    \"passwordConfirmation\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/signup",
+          "host": ["{{baseUrl}}"],
+          "path": ["auth", "signup"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user-login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"user@gmail.com\",\n    \"password\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/signin",
+          "host": ["{{baseUrl}}"],
+          "path": ["auth", "signin"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user-recover-email",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"marcelinoandre@gmail.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/send-recover-email",
+          "host": ["{{baseUrl}}"],
+          "path": ["auth", "send-recover-email"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user-reset-password",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"marcelinoandre@gmail.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/486d2f369a19c47a0c3719f95d87d6ae35724dff2ef0f99c8a6b1d2118fd43af",
+          "host": ["{{baseUrl}}"],
+          "path": [
+            "auth",
+            "486d2f369a19c47a0c3719f95d87d6ae35724dff2ef0f99c8a6b1d2118fd43af"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user-confirm-password",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"user@gmail.com\",\n    \"password\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/a7ba99abbb950a18082f643e8ea7f8e63d035ce7006e9ce180d1ecedbe07169c",
+          "host": ["{{baseUrl}}"],
+          "path": [
+            "auth",
+            "a7ba99abbb950a18082f643e8ea7f8e63d035ce7006e9ce180d1ecedbe07169c"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user-change-password",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"user@gmail.com\",\n    \"password\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/a7ba99abbb950a18082f643e8ea7f8e63d035ce7006e9ce180d1ecedbe07169c",
+          "host": ["{{baseUrl}}"],
+          "path": [
+            "auth",
+            "a7ba99abbb950a18082f643e8ea7f8e63d035ce7006e9ce180d1ecedbe07169c"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user-me",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"TESTE\": \"OLA\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/me",
+          "host": ["{{baseUrl}}"],
+          "path": ["auth", "me"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user-me Copy",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"TESTE\": \"OLA\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/me",
+          "host": ["{{baseUrl}}"],
+          "path": ["auth", "me"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

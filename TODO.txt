@@ -1,4 +1,5 @@
-[]Email de recuperação de senha
+[x]Email de recuperação de senha
+[X]Add folder log in .gitignore
 []Verificar se na redefinição de senha o campo confirmationToken permanece com informação
 []testar endpoint com o usuario logado
 []incluir collection do postman no repositorio

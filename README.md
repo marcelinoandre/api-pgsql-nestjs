@@ -6,10 +6,10 @@
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
 ## Description
-Execução  de um tutorial encontrado na internet sobre uma aplicação postgresql, docker e o framework [Nest](https://nestjs.com), com o intuito de práticar os conhecimentos.
+Execução  de um tutorial [pego na internet](https://medium.com/@iago.maiasilva/construindo-uma-api-com-nestjs-postgresql-e-docker-parte-1-criando-nosso-primeiro-endpoint-248d4b8ecc9c) que na minha opinião é o melhor conteúdo deste tipo em português que encontrei, sobre uma aplicação postgresql, docker e o framework [Nest](https://nestjs.com), com o intuito de práticar os conhecimentos.
 
 ## Funcionalidades
-- Criação de conta para usuários externos
+- Criação de conta para usuários comuns
 - Criação de conta para usuários Administradores
 - Autenticação e Autorização
 - Envio de emails para confirmação de cadastro
@@ -24,6 +24,13 @@ Execução  de um tutorial encontrado na internet sobre uma aplicação postgres
 
 ```bash
 $ npm install
+```
+
+## Running Docker
+```bash
+#up container database
+docker-compose up
+
 ```
 
 ## Running the app
@@ -51,17 +58,3 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
